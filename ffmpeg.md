@@ -1,14 +1,11 @@
-## An ffmpeg and SDL Tutorial
+# An ffmpeg and SDL Tutorial
 
 ### or
 
-## How to Write a Video Player in
+# How to Write a Video Player in Less Than 1000 Lines
 
-Less Than 1000 Lines
-
-Page 1 2 3 4 5 6 7 End Prev Home Next &nbsp_place_holder;
-
-# UPDATE: This tutorial is up to date as of February 2015.
+### UPDATE 2020: WIP to use the most recent versions of ffmpeg.
+###### UPDATE: This tutorial is up to date as of February 2015.
 
 ffmpeg is a wonderful library for creating video applications or even general
 purpose utilities. ffmpeg takes care of all the hard work of video processing
@@ -53,26 +50,23 @@ tarball of the text files and source code or just the source.
 Please feel free to email me with bugs, questions, comments, ideas, features,
 whatever, at _dranger at gmail dot com_.
 
-_**>>** Proceed with the tutorial!_
+_**>>** [Proceed with the tutorial](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial01.md)!_
 
 * * *
 
-Function Reference
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
 
-Data Reference
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
 
-email:
+[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
 
-dranger at gmail dot com
-
-Back to dranger.com
+email: dranger at gmail dot com
 
 This work is licensed under the Creative Commons Attribution-Share Alike 2.5
 License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/2.5/ or send a letter to Creative
 Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
 
-  
 Code examples are based off of FFplay, Copyright (c) 2003 Fabrice Bellard, and
 a tutorial by Martin Bohme.
 

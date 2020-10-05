@@ -1,8 +1,4 @@
-## An ffmpeg and SDL Tutorial
-
-Page 1 2 3 4 5 6 7 End Prev Home Next &nbsp_place_holder;
-
-Text version
+# An ffmpeg and SDL Tutorial
 
 ## Tutorial 01: Making Screencaps
 
@@ -350,25 +346,22 @@ run:
 Most image programs should be able to open PPM files. Test it on some movie
 files.
 
-_**>>** Tutorial 2: Outputting to the Screen_
+_**>>** [Tutorial 2: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial02.md)_
 
 * * *
 
-Function Reference
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
 
-Data Reference
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
 
-email:
+[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
 
-dranger at gmail dot com
-
-Back to dranger.com
+email: dranger at gmail dot com
 
 This work is licensed under the Creative Commons Attribution-Share Alike 2.5
 License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/2.5/ or send a letter to Creative
 Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
-
 
 Code examples are based off of FFplay, Copyright (c) 2003 Fabrice Bellard, and
 a tutorial by Martin Bohme.
