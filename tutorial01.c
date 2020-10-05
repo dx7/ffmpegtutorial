@@ -155,15 +155,23 @@ int main(int argc, char *argv[]) {
   while(av_read_frame(pFormatCtx, &packet)>=0) {
     // Is this a packet from the video stream?
     if(packet.stream_index==videoStream) {
-      // Decode video frame
-      avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);
+        // Decode video frame
+        frameFinished = 0;
+        int ret = avcodec_receive_frame(pCodecCtx, pFrame);
 
-      // Did we get a video frame?
-      if(frameFinished) {
-	// Convert the image from its native format to RGB
-	sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
-		  pFrame->linesize, 0, pCodecCtx->height,
-		  pFrameRGB->data, pFrameRGB->linesize);
+        if (ret == 0)
+            frameFinished = 1;
+        if (ret == AVERROR(EAGAIN))
+            ret = 0;
+        if (ret == 0)
+            ret = avcodec_send_packet(pCodecCtx, &packet);
+
+        // Did we get a video frame?
+        if(frameFinished) {
+            // Convert the image from its native format to RGB
+            sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
+                    pFrame->linesize, 0, pCodecCtx->height,
+                    pFrameRGB->data, pFrameRGB->linesize);
 
 	// Save the frame to disk
 	if(++i<=5)
