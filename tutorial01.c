@@ -76,8 +76,6 @@ int main(int argc, char *argv[]) {
     printf("Please provide a movie file\n");
     return -1;
   }
-  // Register all formats and codecs
-  av_register_all();
 
   // Open video file
   if(avformat_open_input(&pFormatCtx, argv[1], NULL, NULL)!=0)
