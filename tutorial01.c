@@ -1,20 +1,21 @@
 // tutorial01.c
 // Code based on a tutorial by Martin Bohme (boehme@inb.uni-luebeckREMOVETHIS.de)
-// Tested on Gentoo, CVS version 5/01/07 compiled with GCC 4.1.1
-// With updates from https://github.com/chelyaev/ffmpeg-tutorial
-// Updates tested on:
-// LAVC 54.59.100, LAVF 54.29.104, LSWS 2.1.101
-// on GCC 4.7.2 in Debian February 2015
-
+// With 2015 updates from https://github.com/chelyaev/ffmpeg-tutorial
+// With 2020 updates from https://github.com/dx7/ffmpegtutorial
+//
+// Tested on
+// LAVC 58.91.100, LAVF 58.45.100, LSWS 5.7.100
+// building with GCC 10.2.0 or Clang 11.0.3
+// on macOS Catalina 10.15.7
+//
 // A small sample program that shows how to use libavformat and libavcodec to
 // read video from a file.
 //
 // Use
 //
-// gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale -lz
+// gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale
 //
-// to build (assuming libavformat and libavcodec are correctly installed
-// your system).
+// to build (assuming libs are correctly installed in your system).
 //
 // Run using
 //
