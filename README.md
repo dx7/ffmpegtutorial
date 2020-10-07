@@ -22,6 +22,7 @@ That will be tested on Linux soon.
 ### Chapters updated:
 
     - Tutorial 01: Making Screencaps
+    - Tutorial 02: Outputting to the Screen
 
 ### [Let's get started!](https://github.com/dx7/ffmpegtutorial/blob/master/ffmpeg.md)
 
