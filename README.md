@@ -21,8 +21,9 @@ That will be tested on Linux soon.
 
 ### Chapters updated:
 
-    - Tutorial 01: Making Screencaps
-    - Tutorial 02: Outputting to the Screen
+- [Introduction](https://github.com/dx7/ffmpegtutorial/blob/master/ffmpeg.md)
+- [Tutorial 01: Making Screencaps](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial01.c)
+- [Tutorial 02: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial02.c)
 
 ### [Let's get started!](https://github.com/dx7/ffmpegtutorial/blob/master/ffmpeg.md)
 
