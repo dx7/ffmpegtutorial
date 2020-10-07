@@ -1,12 +1,9 @@
-## An ffmpeg and SDL Tutorial
-
-Page 1 2 3 4 5 6 7 End Prev Home Next &nbsp_place_holder;
-
-Text version
+# An ffmpeg and SDL Tutorial
 
 ## Tutorial 02: Outputting to the Screen
 
-Code: tutorial02.c
+Code: [tutorial02.c](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial02.c)
+
 
 ### SDL and Video
 
@@ -19,10 +16,10 @@ the rest of them, too).
 
 SDL has many methods for drawing images to the screen, and it has one in
 particular that is meant for displaying movies on the screen - what it calls a
-YUV overlay. YUV (technically not YUV but YCbCr) *** A note: **There is a
+YUV overlay. YUV (technically not YUV but YCbCr) **A note:** There is a
 great deal of annoyance from some people at the convention of calling "YCbCr"
 "YUV". Generally speaking, YUV is an analog format and YCbCr is a digital
-format. ffmpeg and SDL both refer to YCbCr as YUV in their code and macros. is
+format. ffmpeg and SDL both refer to YCbCr as YUV in their code and macros. It is
 a way of storing raw image data like RGB. Roughly speaking, Y is the
 brightness (or "luma") component, and U and V are the color components. (It's
 more complicated than RGB because some of the color information is discarded,
@@ -44,35 +41,36 @@ and instead output our frame to the screen. But first we have to start by
 seeing how to use the SDL Library. First we have to include the libraries and
 initalize SDL:
 
-    
-    
+
+
     #include <SDL.h>
     #include <SDL_thread.h>
-    
-    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)) {
-      fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
-      exit(1);
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)) {
+        fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
+        exit(1);
     }
-    
+
 
 `SDL_Init()` essentially tells the library what features we're going to use.
 `SDL_GetError()`, of course, is a handy debugging function.
+
 
 ### Creating a Display
 
 Now we need a place on the screen to put stuff. The basic area for displaying
 images with SDL is called a **surface**:
 
-    
-    
+
+
     SDL_Surface *screen;
-    
+
     screen = SDL_SetVideoMode(pCodecCtx->width, pCodecCtx->height, 0, 0);
-    if(!screen) {
-      fprintf(stderr, "SDL: could not set video mode - exiting\n");
-      exit(1);
+    if (!screen) {
+        fprintf(stderr, "SDL: could not set video mode - exiting\n");
+        exit(1);
     }
-    
+
 
 This sets up a screen with the given width and height. The next option is the
 bit depth of the screen - 0 is a special value that means "same as the current
@@ -81,31 +79,32 @@ display". (This does not work on OS X; see source.)
 Now we create a YUV overlay on that screen so we can input video to it, and
 set up our SWSContext to convert the image data to YUV420:
 
-    
-    
-    SDL_Overlay     *bmp = NULL;
+
+
+    SDL_Overlay       *bmp = NULL;
     struct SWSContext *sws_ctx = NULL;
-    
+
     bmp = SDL_CreateYUVOverlay(pCodecCtx->width, pCodecCtx->height,
                                SDL_YV12_OVERLAY, screen);
-    
+
     // initialize SWS context for software scaling
     sws_ctx = sws_getContext(pCodecCtx->width,
-                             pCodecCtx->height,
-    			 pCodecCtx->pix_fmt,
-    			 pCodecCtx->width,
-    			 pCodecCtx->height,
-    			 PIX_FMT_YUV420P,
-    			 SWS_BILINEAR,
-    			 NULL,
-    			 NULL,
-    			 NULL
-    			 );
-    
-    
+            pCodecCtx->height,
+            pCodecCtx->pix_fmt,
+            pCodecCtx->width,
+            pCodecCtx->height,
+            AV_PIX_FMT_YUV420P,
+            SWS_BILINEAR,
+            NULL,
+            NULL,
+            NULL
+            );
+
+
 
 As we said before, we are using YV12 to display the image, and getting YUV420
 data from ffmpeg.
+
 
 ### Displaying the Image
 
@@ -113,33 +112,33 @@ Well that was simple enough! Now we just need to display the image. Let's go
 all the way down to where we had our finished frame. We can get rid of all
 that stuff we had for the RGB frame, and we're going to replace the
 `SaveFrame()` with our display code. To display the image, we're going to make
-an AVPicture struct and set its data pointers and linesize to our YUV overlay:
+an `AVFrame` struct and set its data pointers and linesize to our YUV overlay:
 
-    
-    
-      if(frameFinished) {
-        SDL_LockYUVOverlay(bmp);
-    
-        AVPicture pict;
-        pict.data[0] = bmp->pixels[0];
-        pict.data[1] = bmp->pixels[2];
-        pict.data[2] = bmp->pixels[1];
-    
-        pict.linesize[0] = bmp->pitches[0];
-        pict.linesize[1] = bmp->pitches[2];
-        pict.linesize[2] = bmp->pitches[1];
-    
-        // Convert the image into YUV format that SDL uses
-        sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
-    	      pFrame->linesize, 0, pCodecCtx->height,
-    	      pict.data, pict.linesize);
-        
-        SDL_UnlockYUVOverlay(bmp);
-      }    
-    
+
+
+      if (frameFinished) {
+          SDL_LockYUVOverlay(bmp);
+
+          AVFrame pict;
+          pict.data[0] = bmp->pixels[0];
+          pict.data[1] = bmp->pixels[2];
+          pict.data[2] = bmp->pixels[1];
+
+          pict.linesize[0] = bmp->pitches[0];
+          pict.linesize[1] = bmp->pitches[2];
+          pict.linesize[2] = bmp->pitches[1];
+
+          // Convert the image into YUV format that SDL uses
+          sws_scale(sws_ctx, (uint8_t const * const *) pFrame->data,
+                pFrame->linesize, 0, pCodecCtx->height,
+                pict.data, pict.linesize);
+
+          SDL_UnlockYUVOverlay(bmp);
+      }
+
 
 First, we lock the overlay because we are going to be writing to it. This is a
-good habit to get into so you don't have problems later. The AVPicture struct,
+good habit to get into so you don't have problems later. The `AVFrame` struct,
 as shown before, has a `data` pointer that is an array of 4 pointers. Since we
 are dealing with YUV420P here, we only have 3 channels, and therefore only 3
 sets of data. Other formats might have a fourth pointer for an alpha channel
@@ -149,8 +148,9 @@ term SDL uses to refer to the width of a given line of data.) So what we do is
 point the three arrays of `pict.data` at our overlay, so when we write to
 pict, we're actually writing into our overlay, which of course already has the
 necessary space allocated. Similarly, we get the linesize information directly
-from our overlay. We change the conversion format to `PIX_FMT_YUV420P`, and we
+from our overlay. We change the conversion format to `AV_PIX_FMT_YUV420P`, and we
 use `sws_scale` just like before.
+
 
 ### Drawing the Image
 
@@ -159,25 +159,26 @@ also pass this function a rectangle that says where the movie should go and
 what width and height it should be scaled to. This way, SDL does the scaling
 for us, and it can be assisted by your graphics processor for faster scaling:
 
-    
-    
+
+
     SDL_Rect rect;
-    
-      if(frameFinished) {
+
+    if (frameFinished) {
         /* ... code ... */
         // Convert the image into YUV format that SDL uses
-        sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
+        sws_scale(sws_ctx, (uint8_t const * const *) pFrame->data,
                   pFrame->linesize, 0, pCodecCtx->height,
-    	      pict.data, pict.linesize);
-        
+                  pict.data, pict.linesize);
+
         SDL_UnlockYUVOverlay(bmp);
-    	rect.x = 0;
-    	rect.y = 0;
-    	rect.w = pCodecCtx->width;
-    	rect.h = pCodecCtx->height;
-    	SDL_DisplayYUVOverlay(bmp, &rect;);
-      }
-    
+
+        rect.x = 0;
+        rect.y = 0;
+        rect.w = pCodecCtx->width;
+        rect.h = pCodecCtx->height;
+        SDL_DisplayYUVOverlay(bmp, &rect);
+    }
+
 
 Now our video is displayed!
 
@@ -191,33 +192,33 @@ program, we're going to poll for events right after we finish processing a
 packet. For now, we're just going to handle the `SDL_QUIT` event so we can
 exit:
 
-    
-    
-    SDL_Event       event;
-    
-        av_free_packet(&packet;);
-        SDL_PollEvent(&event;);
-        switch(event.type) {
+
+
+    SDL_Event event;
+
+    av_packet_unref(&packet);
+    SDL_PollEvent(&event);
+    switch (event.type) {
         case SDL_QUIT:
-          SDL_Quit();
-          exit(0);
-          break;
+            SDL_Quit();
+            exit(0);
+            break;
         default:
-          break;
-        }
-    
+            break;
+    }
+
 
 And there we go! Get rid of all the old cruft, and you're ready to compile. If
 you are using Linux or a variant, the best way to compile using the SDL libs
 is this:
 
-    
-    
-    gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale -lz -lm \
-    `sdl-config --cflags --libs`
-    
 
-sdl-config just prints out the proper flags for gcc to include the SDL
+
+    gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale \
+    `sdl-config --cflags --libs`
+
+
+`sdl-config` just prints out the proper flags for gcc to include the SDL
 libraries properly. You may need to do something different to get it to
 compile on your system; please check the SDL documentation for your system.
 Once it compiles, go ahead and run it.
@@ -228,26 +229,23 @@ the movie file. We don't have any code right now for figuring out _when_ we
 need to display video. Eventually (in Tutorial 5), we'll get around to syncing
 the video. But first we're missing something even more important: sound!
 
-_**>>** Playing Sound_
+_**>>** [Tutorial 3: Playing Sound](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial03.md)_
 
 * * *
 
-Function Reference
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
 
-Data Reference
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
 
-email:
+[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
 
-dranger at gmail dot com
-
-Back to dranger.com
+email: dranger at gmail dot com
 
 This work is licensed under the Creative Commons Attribution-Share Alike 2.5
 License. To view a copy of this license, visit
 http://creativecommons.org/licenses/by-sa/2.5/ or send a letter to Creative
 Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
 
-  
 Code examples are based off of FFplay, Copyright (c) 2003 Fabrice Bellard, and
 a tutorial by Martin Bohme.
 
