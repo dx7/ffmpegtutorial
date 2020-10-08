@@ -15,7 +15,7 @@
  *
  * Use
  *
- * gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale
+ * gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale -lavutil
  *
  * to build (assuming libs are correctly installed in your system).
  *

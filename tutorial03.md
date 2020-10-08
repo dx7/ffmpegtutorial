@@ -453,7 +453,7 @@ data to SDL, which SDL beams to your sound card. Go ahead and compile:
 
     
     
-    gcc -o tutorial03 tutorial03.c -lavutil -lavformat -lavcodec -lswscale -lz -lm \
+    gcc -o tutorial03 tutorial03.c -lavutil -lavformat -lavcodec -lswscale -lavutil -lz -lm \
     `sdl-config --cflags --libs`
     
 

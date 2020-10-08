@@ -392,7 +392,7 @@ So that's it! Go ahead and compile it:
 
     
     
-    gcc -o tutorial05 tutorial05.c -lavutil -lavformat -lavcodec -lswscale -lz -lm \
+    gcc -o tutorial05 tutorial05.c -lavutil -lavformat -lavcodec -lswscale -lavutil -lz -lm \
     `sdl-config --cflags --libs`
     
 

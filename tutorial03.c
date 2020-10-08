@@ -12,7 +12,7 @@
 //
 // Use
 //
-// gcc -o tutorial03 tutorial03.c -lavformat -lavcodec -lswscale -lz -lm `sdl-config --cflags --libs`
+// gcc -o tutorial03 tutorial03.c -lavformat -lavcodec -lswscale -lavutil -lz -lm `sdl-config --cflags --libs`
 // to build (assuming libavformat and libavcodec are correctly installed, 
 // and assuming you have sdl-config. Please refer to SDL docs for your installation.)
 //

@@ -214,7 +214,7 @@ is this:
 
 
 
-    gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale \
+    gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale -lavutil \
     `sdl-config --cflags --libs`
 
 

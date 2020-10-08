@@ -244,7 +244,7 @@ That's it! We're done! Go ahead and compile your player:
 
     
     
-    gcc -o tutorial07 tutorial07.c -lavutil -lavformat -lavcodec -lswscale -lz -lm \
+    gcc -o tutorial07 tutorial07.c -lavutil -lavformat -lavcodec -lswscale -lavutil -lz -lm \
     `sdl-config --cflags --libs`
     
 

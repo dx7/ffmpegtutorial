@@ -14,7 +14,7 @@
  *
  * Use
  *
- * gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale `sdl-config --cflags --libs`
+ * gcc -o tutorial02 tutorial02.c -lavformat -lavcodec -lswscale -lavutil `sdl-config --cflags --libs`
  *
  * to build (assuming libs are correctly installed in your system).
  *

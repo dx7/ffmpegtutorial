@@ -286,7 +286,7 @@ any variables that I didn't bother defining or initializing. Then compile it:
 
     
     
-    gcc -o tutorial06 tutorial06.c -lavutil -lavformat -lavcodec -lswscale -lz -lm \
+    gcc -o tutorial06 tutorial06.c -lavutil -lavformat -lavcodec -lswscale -lavutil -lz -lm \
     `sdl-config --cflags --libs`
     
 

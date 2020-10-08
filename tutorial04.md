@@ -731,7 +731,7 @@ So that's it! Go ahead and compile it:
 
     
     
-    gcc -o tutorial04 tutorial04.c -lavutil -lavformat -lavcodec -lswscale -lz -lm \
+    gcc -o tutorial04 tutorial04.c -lavutil -lavformat -lavcodec -lswscale -lavutil -lz -lm \
     `sdl-config --cflags --libs`
     
 

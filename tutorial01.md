@@ -340,7 +340,7 @@ run:
 
 
 
-    gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale
+    gcc -o tutorial01 tutorial01.c -lavformat -lavcodec -lswscale -lavutil
 
 
 Most image programs should be able to open PPM files. Test it on some movie
