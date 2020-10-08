@@ -2,7 +2,7 @@
 
 ## Tutorial 02: Outputting to the Screen
 
-Code: [tutorial02.c](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial02.c)
+Code: [tutorial02.c](https://github.com/dx7/ffmpegtutorial/blob/master/src/tutorial02.c)
 
 
 ### SDL and Video
@@ -229,15 +229,15 @@ the movie file. We don't have any code right now for figuring out _when_ we
 need to display video. Eventually (in Tutorial 5), we'll get around to syncing
 the video. But first we're missing something even more important: sound!
 
-_**>>** [Tutorial 3: Playing Sound](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial03.md)_
+_**>>** [Tutorial 3: Playing Sound](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial03.md)_
 
 * * *
 
-[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/functions.md)
 
-[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/data.md)
 
-[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
+[Back](https://github.com/dx7/ffmpegtutorial)
 
 email: dranger at gmail dot com
 

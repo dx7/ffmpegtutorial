@@ -50,15 +50,15 @@ tarball of the text files and source code or just the source.
 Please feel free to email me with bugs, questions, comments, ideas, features,
 whatever, at _dranger at gmail dot com_.
 
-_**>>** [Proceed with the tutorial](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial01.md)!_
+_**>>** [Proceed with the tutorial](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial01.md)!_
 
 * * *
 
-[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/functions.md)
 
-[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/data.md)
 
-[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
+[Back](https://github.com/dx7/ffmpegtutorial)
 
 email: dranger at gmail dot com
 

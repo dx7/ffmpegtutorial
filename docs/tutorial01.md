@@ -2,7 +2,7 @@
 
 ## Tutorial 01: Making Screencaps
 
-Code: [tutorial01.c](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial01.c)
+Code: [tutorial01.c](https://github.com/dx7/ffmpegtutorial/blob/master/src/tutorial01.c)
 
 ### Overview
 
@@ -346,15 +346,15 @@ run:
 Most image programs should be able to open PPM files. Test it on some movie
 files.
 
-_**>>** [Tutorial 2: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/tutorial02.md)_
+_**>>** [Tutorial 2: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial02.md)_
 
 * * *
 
-[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/functions.md)
+[Function Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/functions.md)
 
-[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/data.md)
+[Data Reference](https://github.com/dx7/ffmpegtutorial/blob/master/docs/data.md)
 
-[Back](https://github.com/dx7/ffmpegtutorial/blob/master/README.md)
+[Back](https://github.com/dx7/ffmpegtutorial)
 
 email: dranger at gmail dot com
 
