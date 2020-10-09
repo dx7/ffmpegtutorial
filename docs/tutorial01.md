@@ -346,7 +346,7 @@ run:
 Most image programs should be able to open PPM files. Test it on some movie
 files.
 
-_**>>** [Tutorial 2: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial02.md)_
+_**>>** [Tutorial 02: Outputting to the Screen](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial02.md)_
 
 * * *
 

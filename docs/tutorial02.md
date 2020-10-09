@@ -36,7 +36,7 @@ arrays. ffmpeg can convert images to YUV420P, with the added bonus that many
 video streams are in that format already, or are easily converted to that
 format.
 
-So our current plan is to replace the `SaveFrame()` function from Tutorial 1,
+So our current plan is to replace the `SaveFrame()` function from Tutorial 01,
 and instead output our frame to the screen. But first we have to start by
 seeing how to use the SDL Library. First we have to include the libraries and
 initalize SDL:
@@ -229,7 +229,7 @@ the movie file. We don't have any code right now for figuring out _when_ we
 need to display video. Eventually (in Tutorial 5), we'll get around to syncing
 the video. But first we're missing something even more important: sound!
 
-_**>>** [Tutorial 3: Playing Sound](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial03.md)_
+_**>>** [Tutorial 03: Playing Sound](https://github.com/dx7/ffmpegtutorial/blob/master/docs/tutorial03.md)_
 
 * * *
 
