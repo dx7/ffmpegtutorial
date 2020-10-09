@@ -141,12 +141,23 @@ int audio_decode_frame(AVCodecContext *aCodecCtx, uint8_t *audio_buf, int buf_si
     for(;;) {
         while(audio_pkt_size > 0) {
             int got_frame = 0;
-            len1 = avcodec_decode_audio4(aCodecCtx, &frame, &got_frame, &pkt);
+            len1 = avcodec_receive_frame(aCodecCtx, &frame);
+
+            if (len1 == 0)
+                got_frame = 1;
+            if (len1 == AVERROR(EAGAIN))
+                len1 = 0;
+            if (len1 == 0)
+                len1 = avcodec_send_packet(aCodecCtx, &pkt);
+            if (len1 == AVERROR(EAGAIN))
+                len1 = 0;
+
             if(len1 < 0) {
                 /* if error, skip frame */
                 audio_pkt_size = 0;
                 break;
             }
+            len1 = pkt.size;
             audio_pkt_data += len1;
             audio_pkt_size -= len1;
             data_size = 0;
